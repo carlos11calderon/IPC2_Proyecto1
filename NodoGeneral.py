@@ -8,3 +8,4 @@ class NodoGeneral:
         self.pfinaly = pfinaly   
         self.relleno=relleno
         self.siguiente=siguiente
+        self.listaCorta=None
