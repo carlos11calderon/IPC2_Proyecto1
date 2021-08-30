@@ -3,6 +3,7 @@ from NodoMa import Nodo
 from EncabezadoMa import Encabezado
 import os
 import sys
+from graphviz import *
 
 class Ortogonal:
     def __init__(self):
@@ -132,39 +133,4 @@ class Ortogonal:
             eFila = eFila.siguiente
         return None
 
-    """def GraficarMatriz(self, columnas):
-        cont=0
-        f = open('archivo.dot', 'w', encoding='utf-8')
-        f.write("digraph dibujo{\n")
-        f.write('tabla[shape = plaintext, fontsize = 10, label = <\n')
-        f.write('<TABLE BORDER="0" border = "0.5" bgcolor="#8CF0FF" cellborder = "1">\n"')
-
-        eFila = self.encaFilas.cabeza
-        f.write('<tr>')
-        for x in range(int(columnas)+1):
-            if x == 0:
-                f.write('<td BGCOLOR = "black">' + str(x) + '</td>')
-            else:
-                f.write('<td>' + str(x) + '</td>')
-        f.write('</tr>')
-        while (eFila != None):
-            actual = eFila.acceso
-            f.write('<tr>')
-            while (actual != None):
-                if cont == 0:
-                    f.write('<td>'+ str(actual.fila)+'</td>')
-                    cont=cont+1
-
-                f.write('<td>'+ str(actual.valor)+'</td>')
-                actual = actual.derecha
-            f.write('</tr>')
-            cont=0
-            print("")
-            eFila = eFila.siguiente
-
-        f.write('</TABLE>\n')
-        f.write('>];')
-        f.write('}')
-        f.close()
-
-        os.system('dot -Tpng archivo.dot -o salida.png') """
+    

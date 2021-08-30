@@ -1,5 +1,4 @@
 #import
-from tkinter import filedialog, Tk
 from typing import List
 from _elementtree import *
 from ListaSimple import *
@@ -7,6 +6,8 @@ from MatrizOrtogonal import Ortogonal
 from NodoSimple import *
 import xml.etree.cElementTree as ET
 import os
+import time
+from graphviz import *
 
 
 
@@ -70,7 +71,7 @@ def CargarArchivo():
                
             contadorposicion=1          ## este contador permite tener control de la lectura de las coordeneadas iniciales y finales 
             for ele in elemento: # con este for valuno las etiquetas despues de obtener el nombre del terreno
-                if ele.tag != "dimension":
+                if ele.tag != "dimension" and ele.tag != "DIMENSION":
                     for e in ele: # con este for evaluo las etiquetas de las posiciones iniciales y finales
                         texto = ele.tag
                         print(texto)
@@ -114,6 +115,7 @@ def graficarMatriz():
     linea=""
     print("--------------------Generar grafica-------------------------")
     print("******Se esta generando la grafica...******")
+    time.sleep(3)
     tree = ET.parse(ruta)
     root = tree.getroot()
     for elemento in root:
@@ -176,7 +178,8 @@ def graficarMatriz():
         f.write('label="' + nombreTerreno + '";')
         f.write('}')
         f.close()
-        os.system('dot -Tpdf archivo.dot -o reporte.pdf')
-        os.system('reporte.pdf')
+
+        os.system('dot -Tpdf archivo.dot -o reporte_'+nombreTerreno+'.pdf')
+        os.system('reporte_'+nombreTerreno+'.pdf')
 
 Menu()
